@@ -33,21 +33,21 @@ public class ChatRoomUi extends JFrame {
     private final int left_width = 200;
     private int chatSectionHeight;
 
-    private JPanel chatSection = new JPanel(new FlowLayout(FlowLayout.CENTER,0,0));
-    private JScrollPane scrollChat = new JScrollPane(chatSection,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);;
-    private JPanel onlineContainer = new JPanel(new FlowLayout(FlowLayout.LEFT,0,0));
-    private JPanel groupsContainer = new JPanel(new FlowLayout(FlowLayout.LEFT,0,0));
-    private JLabel chatTitle = new JLabel();
-    private JPanel chatTitleDiv = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    private final JPanel chatSection = new JPanel(new FlowLayout(FlowLayout.CENTER,0,0));
+    private final JScrollPane scrollChat = new JScrollPane(chatSection,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);;
+    private final JPanel onlineContainer = new JPanel(new FlowLayout(FlowLayout.LEFT,0,0));
+    private final JPanel groupsContainer = new JPanel(new FlowLayout(FlowLayout.LEFT,0,0));
+    private final JLabel chatTitle = new JLabel();
+    private final JPanel chatTitleDiv = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-    private JButton sendBtn = new JButton("发送");
-    private JTextField sendInput = new JTextField();
+    private final JButton sendBtn = new JButton("发送");
+    private final JTextField sendInput = new JTextField();
     private User user;
     private final ObjectOutputStream oos;
     private final ObjectInputStream ois;
     private final Socket socket;
 
-    public static int nowGroupId=1; //第一个群的id
+    public static int nowGroupId=1; // 第一个群的id
 
     public ChatRoomUi(User loginUser, Socket socket, ObjectOutputStream oos,ObjectInputStream ois) {
         setTitle("聊天室");
@@ -279,7 +279,8 @@ public class ChatRoomUi extends JFrame {
 
     private void exitChatRoom() {
         try {
-            oos.writeObject(new SocketMessage(MessageTypeEnum.Exit,null)); //给服务器发送退出
+            //给服务器发送退出
+            oos.writeObject(new SocketMessage(MessageTypeEnum.Exit,null));
             oos.close();
             ois.close();
             socket.close();

@@ -10,25 +10,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * JDBC工具类
+ */
 public class JDBCutil {
-    private static DataSource ds; // 数据源
-    static { //加载数据库配置文件
+    private static DataSource ds;
+
+    // 加载数据源配置文件
+    static {
         try {
             Properties ps = new Properties();
             ps.load(new FileInputStream("src/source/druid.properties"));
             ds = DruidDataSourceFactory.createDataSource(ps);
         } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void main(String[] args) {
-        Connection connection = getConnection();
-        System.out.println(connection);
-
-        try {
-            connection.close();
-        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

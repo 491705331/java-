@@ -1,5 +1,8 @@
 package tools;
 
+/**
+ * 消息类型
+ */
 public enum MessageTypeEnum {
     Login_Success, //登录成功
     Login_Error, //登陆失败
